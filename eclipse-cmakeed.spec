@@ -15,6 +15,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 
 BuildRequires: eclipse-pde >= 1:3.4.0
+BuildRequires: zip
 Requires: eclipse-platform >= 3.4.0
 
 %description
