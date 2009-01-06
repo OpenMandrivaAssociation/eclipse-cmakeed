@@ -6,7 +6,7 @@ Version:        1.1.0
 Release:        %mkrel 0.1.0
 Summary:        CMake Editor plug-in for Eclipse
 
-Group:          Development/Tools
+Group:          Development/Java
 License:        CPL
 URL:            http://cmakeed.sourceforge.net
 Source0:        http://heanet.dl.sourceforge.net/sourceforge/cmakeed/CMakeEd-Src-1.1.0.tar.gz
