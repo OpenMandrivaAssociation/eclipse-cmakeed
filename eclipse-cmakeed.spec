@@ -2,7 +2,7 @@
 %define install_loc    %{_datadir}/eclipse/dropins/cmakeed
 
 Name:           eclipse-cmakeed
-Version:        1.1.0
+Version:        1.1.2
 Release:        %mkrel 0.1.0
 Summary:        CMake Editor plug-in for Eclipse
 
@@ -10,7 +10,7 @@ Group:          Development/Java
 License:        CPL
 URL:            http://cmakeed.sourceforge.net
 Source0:        http://heanet.dl.sourceforge.net/sourceforge/cmakeed/CMakeEd-Src-1.1.0.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildArch: noarch
 
