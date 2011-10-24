@@ -1,38 +1,39 @@
-%define eclipse_base   %{_libdir}/eclipse
-%define install_loc    %{_datadir}/eclipse/dropins/cmakeed
+%global eclipse_base   %{_libdir}/eclipse
+%global install_loc    %{_datadir}/eclipse/dropins/cmakeed
 
 Name:           eclipse-cmakeed
-Version:        1.1.2
-Release:        %mkrel 0.1.0
+Version:        1.1.5
+Release:        2
 Summary:        CMake Editor plug-in for Eclipse
 
 Group:          Development/Java
 License:        CPL
 URL:            http://cmakeed.sourceforge.net
-Source0:        http://heanet.dl.sourceforge.net/sourceforge/cmakeed/CMakeEd-Src-1.1.0.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Source0:        http://heanet.dl.sourceforge.net/sourceforge/cmakeed/CMakeEd-Src_%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch: noarch
 
-BuildRequires: eclipse-pde >= 1:3.4.0
-BuildRequires: zip
+BuildRequires: eclipse-pde >= 0:3.4.0
 Requires: eclipse-platform >= 3.4.0
 
 %description
-The CMakeEd plug-in provides an editor for CMake files. The plug-in
-registers an editor for files named CMakeLists.txt and *.cmake.
+The CMakeEd plug-in provides an editor for CMake files. The plug-in registers
+an editor for files named CMakeLists.txt and *.cmake.
 
 %prep
-%setup -q -c
+%setup -q -n 1_1_5
+#remove jar files
+find -name '*.jar' -o -name '*.class' -exec rm -f '{}' \;
 
 %build
-%{eclipse_base}/buildscripts/pdebuild -a "-DjavacSource=1.5 -DjavacTarget=1.5"
+%{eclipse_base}/buildscripts/pdebuild
 
 %install
 %{__rm} -rf %{buildroot}
-install -d -m 755 $RPM_BUILD_ROOT%{install_loc}
+%{__install} -d -m 755 %{buildroot}%{install_loc}
 
-%{__unzip} -q -d $RPM_BUILD_ROOT%{install_loc} \
+%{__unzip} -q -d %{buildroot}%{install_loc} \
      build/rpmBuild/com.cthing.cmakeed.feature.zip
 
 %clean
@@ -41,3 +42,5 @@ install -d -m 755 $RPM_BUILD_ROOT%{install_loc}
 %files
 %defattr(-,root,root,-)
 %{install_loc}
+%doc com.cthing.cmakeed.feature/License.html
+
