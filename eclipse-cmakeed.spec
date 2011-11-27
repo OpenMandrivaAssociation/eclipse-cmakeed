@@ -3,7 +3,7 @@
 
 Name:           eclipse-cmakeed
 Version:        1.1.5
-Release:        2
+Release:        4
 Summary:        CMake Editor plug-in for Eclipse
 
 Group:          Development/Java
